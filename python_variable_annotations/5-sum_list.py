@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from typing import List
 """
 this method returns their sum as a float

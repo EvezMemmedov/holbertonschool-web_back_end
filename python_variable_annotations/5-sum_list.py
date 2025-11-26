@@ -6,4 +6,4 @@ this method returns their sum as a float
 
 
 def sum_list(input_list: List[float]) -> float:
-    return(input_list)
+    return sum(input_list)

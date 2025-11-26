@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Module that provides a function to return the length of each element in an iterable.
+that provides function to return length of each element in an iterable
 """
 
 

@@ -1,12 +1,12 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3\
 """
 Docstring for python_async_function.1-concurrent_coroutines
 """
 
 
-from wait_random import wait_random
-from typing import List
 import asyncio
+from typing import List
+from wait_random import wait_random
 
 
 async def wait_n(n: int, max_delay: int) -> List[float]:
@@ -19,13 +19,13 @@ async def wait_n(n: int, max_delay: int) -> List[float]:
     :return: Description
     :rtype: List[float]
     """
-    task = [asyncio.create_task(wait_random(max_delay)) for _ in range(n)]
+    tasks = [asyncio.create_task(wait_random(max_delay)) for _ in range(n)]
     delays = []
-
-    for tsk in asyncio.as_completed(task):
-        delay = await tsk
+    for task in asyncio.as_completed(tasks):
+        delay = await task
         i = 0
         while i < len(delays) and delays[i] < delay:
             i += 1
         delays.insert(i, delay)
+
     return delays

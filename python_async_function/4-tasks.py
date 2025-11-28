@@ -18,4 +18,8 @@ async def task_wait_n(n: int, max_delay: int) -> int:
         task = task_wait_random(max_delay)
         tasks.append(task)
         delay = await asyncio.gather(*tasks)
-        return sorted(delay)
+        i = 0
+        while i < len(tasks) and tasks[i] < delay:
+            i += 1
+        tasks.insert(i, delay)
+    return tasks

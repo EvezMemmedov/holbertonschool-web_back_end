@@ -1,15 +1,19 @@
 #!/usr/bin/env python3
+"""
+Simple pagniation module
+"""
+
 
 import csv
 import math
 from typing import List
+
 
 def index_range(page, page_size):
     """Return start and end indexes"""
     start = (page - 1) * page_size
     end = start + page_size
     return (start, end)
-
 
 class Server:
     """Server class to paginate a database of popular baby names."""

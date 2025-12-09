@@ -9,15 +9,15 @@ import math
 from typing import List
 
 
-def index_range(page, page_size):
-    """Return start and end indexes"""
-    start = (page - 1) * page_size
-    end = start + page_size
-    return (start, end)
-
 class Server:
     """Server class to paginate a database of popular baby names."""
     DATA_FILE = "Popular_Baby_Names.csv"
+
+    def index_range(page, page_size):
+        """Return start and end indexes"""
+        start = (page - 1) * page_size
+        end = start + page_size
+        return (start, end)
 
     def __init__(self):
         self.__dataset = None
@@ -40,5 +40,4 @@ class Server:
 
         if start >= len(self.dataset()):
             return []
-
         return self.dataset()[start:end]

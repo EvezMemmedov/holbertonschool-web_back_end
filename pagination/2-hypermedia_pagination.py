@@ -42,21 +42,12 @@ class Server:
         if start >= len(self.dataset()):
             return []
         return self.dataset()[start:end]
-    def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
-        """
-        Docstring for get_hyper
-        :param self: Description
-        :param page: Description
-        :type page: int
-        :param page_size: Description
-        :type page_size: int
-        :return: Description
-        :rtype: dict
-        """
-
+    def get_hyper(self, page = 1, page_size = 10):
+        """Return a dictionary with pagination data"""
         data = self.get_page(page, page_size)
         total_items = len(self.dataset())
         total_pages = math.ceil(total_items / page_size)
+
         return {
             "page_size": len(data),
             "page": page,

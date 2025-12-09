@@ -42,6 +42,7 @@ class Server:
         if start >= len(self.dataset()):
             return []
         return self.dataset()[start:end]
+
     def get_hyper(self, page=1, page_size=10):
         """Return hypermedia pagination"""
         data = self.get_page(page, page_size)

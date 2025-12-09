@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
 import csv
-from typing import List, Tuple
+import math
+from typing import List
 
 def index_range(page, page_size):
     """Return start and end indexes"""

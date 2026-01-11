@@ -1,5 +1,5 @@
-export default function cleanSet (set, stratString) {
-  if (!stratString || typeof startString !== 'string') {
+export default function cleanSet(set, startString) {
+  if (!startString || typeof startString !== 'string') {
     return '';
   }
   return Array.from(set)

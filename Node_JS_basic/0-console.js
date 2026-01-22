@@ -1,4 +1,4 @@
-export default function displayMessage(STDOUT) {
+function displayMessage(STDOUT) {
   console.log(STDOUT);
 }
-module.export = displayMessage;
+module.exports = displayMessage;

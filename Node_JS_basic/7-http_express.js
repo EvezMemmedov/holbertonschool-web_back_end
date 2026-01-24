@@ -2,8 +2,7 @@ const express = require('express');
 const fs = require('fs');
 
 const app = express();
-const PORT = 1245;
-const database = process.argv[2];
+const port = 1245;
 
 function countStudents(path) {
   return new Promise((resolve, reject) => {
@@ -19,23 +18,24 @@ function countStudents(path) {
 
       const students = lines.slice(1);
       const fields = {};
-      let output = '';
-
-      output += `Number of students: ${students.length}\n`;
 
       students.forEach((line) => {
         const parts = line.split(',');
-        const firstname = parts[0];
+        const firstName = parts[0];
         const field = parts[3];
 
         if (!fields[field]) {
           fields[field] = [];
         }
-        fields[field].push(firstname);
+        fields[field].push(firstName);
       });
 
+      let output = `Number of students: ${students.length}\n`;
+
       for (const field in fields) {
-        output += `Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}\n`;
+        if (Object.prototype.hasOwnProperty.call(fields, field)) {
+          output += `Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}\n`;
+        }
       }
 
       resolve(output.trim());
@@ -44,11 +44,15 @@ function countStudents(path) {
 }
 
 app.get('/', (req, res) => {
+  res.type('text');
   res.send('Hello Holberton School!');
 });
 
 app.get('/students', async (req, res) => {
+  res.type('text');
   res.write('This is the list of our students\n');
+
+  const database = process.argv[2];
 
   try {
     const result = await countStudents(database);
@@ -58,6 +62,6 @@ app.get('/students', async (req, res) => {
   }
 });
 
-app.listen(PORT);
+app.listen(port);
 
 module.exports = app;

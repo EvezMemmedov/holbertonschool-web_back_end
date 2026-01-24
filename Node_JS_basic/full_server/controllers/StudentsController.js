@@ -10,13 +10,13 @@ export default class StudentsController {
       res.status(200);
       res.write('This is the list of our students\n');
 
-      const sortedFields = Object.keys(fields).sort((a, b) =>
+      const sortedFields = Object.keys(fields).sort((a, b) => (
         a.toLowerCase().localeCompare(b.toLowerCase())
-      );
+      ));
 
       sortedFields.forEach((field) => {
         res.write(
-          `Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}\n`
+          `Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}\n`,
         );
       });
 
